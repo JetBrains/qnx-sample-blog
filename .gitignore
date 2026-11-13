@@ -1,0 +1,6 @@
+# Build output lives in the addvariant leaf directories, nto/<cpu>/<variant>/.
+# Everything the build drops there is generated (objects, dep files and the
+# linked binary, whose name follows $(NAME) and so is not fixed); the only
+# tracked file in those directories is the Makefile addvariant generated.
+nto/*/*/*
+!nto/*/*/Makefile

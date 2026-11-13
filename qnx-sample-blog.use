@@ -1,0 +1,39 @@
+%C - QNX sample application
+
+Syntax:
+%C [argument ...]
+
+Arguments:
+Any arguments are accepted. They are echoed back one per line and then
+summarised.
+
+Description:
+A small QNX Neutrino application whose only job is to report on the context
+it was started in. It prints, in order:
+
+    a banner
+    the full path it was loaded from, as reported by _cmdname()
+    the current working directory
+    its arguments, one per line
+    length statistics for those arguments
+    the environment it inherited
+
+Build options:
+Options are make variables, set on the make command line or from a CLion
+build configuration, not runtime arguments:
+
+    SHOW_ENV=1          include the environment dump (default 0, omitted)
+
+Build variants:
+The recursive build walks Makefile -> nto -> <cpu> -> <variant>, producing one
+binary per target CPU and build type. The debug variants are built without
+optimisation and keep the "_g" suffix, so they can sit on a target alongside
+the release build:
+
+    nto/x86_64/o          qnx-sample      x86_64, optimised
+    nto/x86_64/o-g        qnx-sample_g    x86_64, debug
+    nto/aarch64/o.le      qnx-sample      aarch64 little-endian, optimised
+    nto/aarch64/o.le-g    qnx-sample_g    aarch64 little-endian, debug
+
+Exit status:
+ 0      Success.
